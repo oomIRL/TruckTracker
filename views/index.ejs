@@ -1,0 +1,24 @@
+<html>
+    <%- include('./partial/head.ejs') %>
+
+    <body>
+
+        <%- include('./partial/nav.ejs') %>
+
+        <div class="content">
+            <ul>
+            <% if (trucks.length > 0 ) { %>
+            <% trucks.forEach( truck => { %>
+                <li>
+                <a class="single" href="/status/<%= truck._id %>">
+                    <h3 class="name"><%= truck.name %> | <%= truck.status %></h3></a>
+                    <p class="driver">Driver: <%= truck.driver %></p>
+                </li>
+            <% }) %>
+            <% } else { %>
+                <p>No truck data is available</p>
+            <% } %>
+            </ul>
+        </div>
+    </body>
+</html>

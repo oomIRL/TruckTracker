@@ -1,0 +1,30 @@
+<html>
+    <%- include('./partial/head.ejs') %>
+
+    <body>
+
+    <%- include('./partial/nav.ejs') %>
+
+    <div class="details">
+        <div class="content">
+            <h3><%= truck.name %></h2>
+            <p>Driver: <%= truck.driver %></p>
+            <p>Truck Status: <%= truck.status %></p>
+        </div>
+        <a class="update" href="/status/update/<%= truck._id %>">update</a>
+        <a class="delete" data-doc="<%= truck._id %>">delete</a>
+    </div>
+    <script>
+        const trash = document.querySelector('a.delete');
+        trash.addEventListener('click', (e) => {
+            const endpoint = `/status/${trash.dataset.doc}`;
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((response) => response.json()) 
+            .then((data) => window.location.href = data.redirect)
+            .catch((err) => console.log(err))
+        })
+    </script>
+    </body>
+</html>

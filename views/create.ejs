@@ -1,0 +1,20 @@
+<html>
+    <%- include('./partial/head.ejs') %>
+    
+    <body>
+
+        <%- include('./partial/nav.ejs') %>
+
+        <div class="create-status">
+            <form action="/status" method="POST">
+                <label for="name">Truck Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="driver">Driver:</label>
+                <input type="text" id="driver" name="driver" required>
+                <label for="status">Status:</label>
+                <input type="text" id="status" name="status" required>
+                <button>Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
